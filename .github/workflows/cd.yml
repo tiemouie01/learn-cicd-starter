@@ -16,12 +16,6 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
 
-      - name: Run build script
-        run: ./scripts/buildprod.sh
-
-      - name: Push to Google Artifact Registry
-        run: gcloud builds submit --tag us-central1-docker.pkg.dev/coastal-setting-463707-u2/notely-ar-repo/notely:latest .
-
       - id: "auth"
         uses: "google-github-actions/auth@v2"
         with:
@@ -32,6 +26,9 @@ jobs:
 
       - name: "Use gcloud CLI"
         run: "gcloud info"
+
+      - name: Run build script
+        run: ./scripts/buildprod.sh
 
       - name: Push to Google Artifact Registry
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/coastal-setting-463707-u2/notely-ar-repo/notely:latest .
