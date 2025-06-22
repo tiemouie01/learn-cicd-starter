@@ -18,3 +18,6 @@ jobs:
 
       - name: Run build script
         run: ./scripts/buildprod.sh
+
+      - name: Set up gcloud
+        run: gcloud builds submit --tag us-central1-docker.pkg.dev/coastal-setting-463707-u2/notely-ar-repo/notely:latest .
